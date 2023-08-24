@@ -35,7 +35,7 @@ public class MainViewController implements Initializable{
 	
 	@FXML
 	public void onMIDepartmentAction() {
-		System.out.println("MI Department");
+		loadView("/gui/DepartmentList.fxml");
 	}
 	
 	@FXML
@@ -44,7 +44,7 @@ public class MainViewController implements Initializable{
 	}
 	
 	@Override
-	public void initialize(URL uri, ResourceBundle rb) {
+	public void initialize(URL url, ResourceBundle rb) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -63,7 +63,10 @@ public class MainViewController implements Initializable{
 			mainVBox.getChildren().addAll(newVBox);
 			
 		} catch(IOException e) {
-			Alerts.showAlert("IO Exception", "Couldn't load view", e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("IO Exception", e.getMessage(), null, AlertType.ERROR);
+		}
+		catch(IllegalStateException e) {
+			Alerts.showAlert("Illegal State Exception", "Couldn't load view", e.getMessage(), AlertType.ERROR);
 		}
 	}
 
