@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.entities.Department;
 import model.services.DepartmentService;
@@ -25,7 +26,10 @@ public class DepartmentController implements Initializable{
 	private ObservableList<Department> obsList;
 	
 	@FXML
-	private TableView<Department> tbvDepartment;
+	private VBox vbDepartment;
+	
+	@FXML
+	private TableView<Department> tableViewDepartment;
 	
 	@FXML
 	private TableColumn<Department, Integer> tbcId;
@@ -54,7 +58,7 @@ public class DepartmentController implements Initializable{
 		tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
 		
 		Stage stage = (Stage) Main.getMainScene().getWindow();
-		tbvDepartment.prefHeightProperty().bind(stage.heightProperty());
+		tableViewDepartment.prefHeightProperty().bind(stage.heightProperty());
 	}
 	
 	public void updateTableView() {
@@ -64,6 +68,6 @@ public class DepartmentController implements Initializable{
 		
 		List<Department> list = service.findAll();
 		obsList = FXCollections.observableArrayList(list);
-		tbvDepartment.setItems(obsList);
+		tableViewDepartment.setItems(obsList);
 	}
 }
