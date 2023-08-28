@@ -49,7 +49,7 @@ public class DepartmentController implements Initializable{
 	
 	public void onBTNewAction(ActionEvent event) {
 		Stage parentStage = Utils.currentStage(event);
-		Department obj = new Department(12, "Teste");
+		Department obj = new Department();
 		createDialogForm(obj, "DepartmentForm.fxml", parentStage);
 	}
 	
@@ -87,6 +87,7 @@ public class DepartmentController implements Initializable{
 			
 			DepartmentFormController controller = loader.getController();
 			controller.setDepartment(obj);
+			controller.setDepartmentService(new DepartmentService());
 			controller.updateFormData();
 			
 			Stage dialogStage = new Stage();
