@@ -76,6 +76,10 @@ public class MainViewController implements Initializable{
 		catch(IllegalStateException e) {
 			Alerts.showAlert("Illegal State Exception", "Couldn't load view", e.getMessage(), AlertType.ERROR);
 		}
+		catch(RuntimeException e) {
+			Alerts.showAlert("Ops, somethings wrong", e.getMessage(), null, AlertType.ERROR);
+
+		}
 	}
 
 }
