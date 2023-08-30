@@ -78,13 +78,13 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 	public void deleteById(Integer id) {
 		PreparedStatement st = null;
 		try {
-			st = conn.prepareStatement(
-					"DELETE FROM department"
-					+ "WHERE Id = ?");
+			st = conn.prepareStatement("DELETE FROM department WHERE Id = ? ");
+
 			st.setInt(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
 			Alerts.showAlert("DB Exception", "Row not Found!" , e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);
