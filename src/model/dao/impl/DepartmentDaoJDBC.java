@@ -46,7 +46,7 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 			}
 			
 		} catch (SQLException e) {
-			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception", null, e.getMessage(), AlertType.ERROR);
 		}
 		finally {
 			DB.closeStatement(st);
@@ -83,7 +83,7 @@ public class DepartmentDaoJDBC implements DepartmentDao{
 			st.setInt(1, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
-			Alerts.showAlert("DB Exception", "Row not Found!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception", null, e.getMessage(), AlertType.ERROR);
 			e.printStackTrace();
 		}
 		finally {
