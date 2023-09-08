@@ -37,8 +37,12 @@ public class SellerDaoJDBC implements SellerDao{
 					Statement.RETURN_GENERATED_KEYS );
 			st.setString(1, obj.getName());
 			st.setString(2, obj.getEmail());
-			st.setDate(3, new java.sql.Date(obj.getbDate().getTime()));
-			st.setDouble(4, obj.getSalary());
+			if (obj.getbDate() != null) {
+				st.setDate(3, new java.sql.Date(obj.getbDate().getTime()));
+			}
+			if (obj.getSalary() != null) {
+				st.setDouble(4, obj.getSalary());
+			}
 			st.setInt(5, obj.getDepartment().getId());
 			
 			int rowsAffected = st.executeUpdate();
@@ -58,6 +62,7 @@ public class SellerDaoJDBC implements SellerDao{
 			
 		} catch (SQLException e) {
 			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);
@@ -84,6 +89,7 @@ public class SellerDaoJDBC implements SellerDao{
 			
 		} catch(SQLException e) {
 			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);
@@ -101,6 +107,7 @@ public class SellerDaoJDBC implements SellerDao{
 			
 		} catch(SQLException e) {
 			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);
@@ -127,6 +134,7 @@ public class SellerDaoJDBC implements SellerDao{
 			return null;
 		} catch(SQLException e) {
 			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);
@@ -142,7 +150,7 @@ public class SellerDaoJDBC implements SellerDao{
 		obj.setName(rs.getString("Name"));
 		obj.setEmail(rs.getString("Email"));
 		obj.setSalary(rs.getDouble("BaseSalary"));
-		obj.setbDate(rs.getDate("BirthDate"));
+		obj.setbDate(new java.util.Date(rs.getTimestamp("BirthDate").getTime()));
 		obj.setDepartment(dep);
 		return obj;
 		
@@ -183,6 +191,7 @@ public class SellerDaoJDBC implements SellerDao{
 			
 		}  catch(SQLException e) {
 			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);
@@ -221,6 +230,7 @@ public class SellerDaoJDBC implements SellerDao{
 			
 		}  catch(SQLException e) {
 			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			e.printStackTrace();
 		}
 		finally {
 			DB.closeStatement(st);
