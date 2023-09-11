@@ -31,7 +31,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.entities.Department;
 import model.entities.Seller;
+import model.services.DepartmentService;
 import model.services.SellerService;
 
 public class SellerController implements Initializable, DataChangeListener{
@@ -67,6 +69,9 @@ public class SellerController implements Initializable, DataChangeListener{
 	private TableColumn<Seller, Double> tbcSalary;
 	
 	@FXML
+	private TableColumn<Seller, Department> tbcDepartment;
+	
+	@FXML
 	private Button btNew;
 	
 	public void onBTNewAction(ActionEvent event) {
@@ -88,10 +93,11 @@ public class SellerController implements Initializable, DataChangeListener{
 		tbcId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		tbcName.setCellValueFactory(new PropertyValueFactory<>("name"));
 		tbcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-		tbcBDate.setCellValueFactory(new PropertyValueFactory<>("bDate"));
+		//tbcBDate.setCellValueFactory(new PropertyValueFactory<>("bDate"));
 		//Utils.formatTableColumnDate(tbcBDate, "dd/MM/yyyy HH:mm");
 		tbcSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
 		Utils.formatTableColumnDouble(tbcSalary, 2);
+		tbcDepartment.setCellValueFactory(new PropertyValueFactory<>("department"));
 		
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewSeller.prefHeightProperty().bind(stage.heightProperty());
@@ -117,7 +123,8 @@ public class SellerController implements Initializable, DataChangeListener{
 			
 			SellerFormController controller = loader.getController();
 			controller.setSeller(obj);
-			controller.setSellerService(new SellerService());
+			controller.setServices(new SellerService(), new DepartmentService());
+			controller.loadAssociatedObjects();
 			controller.subDataChangeListener(this);
 			controller.updateFormData();
 			
@@ -132,9 +139,11 @@ public class SellerController implements Initializable, DataChangeListener{
 			
 		} catch(IOException e) {
 			Alerts.showAlert("IO Exception", e.getMessage(), null, AlertType.ERROR);
+			e.printStackTrace();
 		}
 		catch(RuntimeException e) {
 			Alerts.showAlert("Run Time Exception", e.getMessage(), null, AlertType.ERROR);
+			e.printStackTrace();
 		}
 	}
 

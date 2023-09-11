@@ -31,6 +31,7 @@
             <TableColumn fx:id="tbcEmail" prefWidth="99.20001220703125" text="Email" />
             <TableColumn fx:id="tbcBDate" prefWidth="75.0" text="BirthDate" />
             <TableColumn fx:id="tbcSalary" prefWidth="75.0" text="Salary" />
+            <TableColumn fx:id="tbcDepartment" prefWidth="75.0" text="Department" />
             <TableColumn fx:id="tbcEdit" prefWidth="47.2000732421875" />
             <TableColumn fx:id="tbcRemove" prefWidth="71.20001220703125" />
         </columns>

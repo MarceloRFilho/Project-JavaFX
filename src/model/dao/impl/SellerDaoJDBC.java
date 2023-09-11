@@ -61,7 +61,7 @@ public class SellerDaoJDBC implements SellerDao{
 			
 			
 		} catch (SQLException e) {
-			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception", null , e.getMessage(), AlertType.ERROR);
 			e.printStackTrace();
 		}
 		finally {
@@ -88,7 +88,7 @@ public class SellerDaoJDBC implements SellerDao{
 			st.executeUpdate();
 			
 		} catch(SQLException e) {
-			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception",null, e.getMessage(), AlertType.ERROR);
 			e.printStackTrace();
 		}
 		finally {
@@ -106,7 +106,7 @@ public class SellerDaoJDBC implements SellerDao{
 			st.executeUpdate();
 			
 		} catch(SQLException e) {
-			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception", null, e.getMessage(), AlertType.ERROR);
 			e.printStackTrace();
 		}
 		finally {
@@ -133,7 +133,7 @@ public class SellerDaoJDBC implements SellerDao{
 			}
 			return null;
 		} catch(SQLException e) {
-			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception", null , e.getMessage(), AlertType.ERROR);
 			e.printStackTrace();
 		}
 		finally {
@@ -190,7 +190,7 @@ public class SellerDaoJDBC implements SellerDao{
 			return list;
 			
 		}  catch(SQLException e) {
-			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception", null , e.getMessage(), AlertType.ERROR);
 			e.printStackTrace();
 		}
 		finally {
@@ -229,7 +229,7 @@ public class SellerDaoJDBC implements SellerDao{
 			return list;
 			
 		}  catch(SQLException e) {
-			Alerts.showAlert("DB Exception", "No rows affected!" , e.getMessage(), AlertType.ERROR);
+			Alerts.showAlert("DB Exception", null , e.getMessage(), AlertType.ERROR);
 			e.printStackTrace();
 		}
 		finally {
